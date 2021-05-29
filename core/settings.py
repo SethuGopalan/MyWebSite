@@ -2,6 +2,7 @@
 
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -16,7 +17,7 @@ SECRET_KEY = 'django-insecure-7s&sug6(^d7pw)tekq7hek)hwcmhfhbvjn*l2-r*_8phlampa5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['yourdomain.com', '127.0.0.1']
 
 
 # Application definition
@@ -46,7 +47,7 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'] ,
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -114,4 +115,14 @@ STATIC_URL = '/static/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+"""
+this steps to tell dijango  to use media folder
+"""
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static")
+]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
